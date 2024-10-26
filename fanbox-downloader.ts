@@ -22,7 +22,10 @@ class DownloadManage {
 
 	private limit = 0;
 
-	constructor(public readonly userId: string, public readonly feeMap: Map<number, string>) {
+	constructor(
+		public readonly userId: string,
+		public readonly feeMap: Map<number, string>,
+	) {
 		this.downloadObject = new DownloadObject(userId, DownloadManage.utils);
 	}
 
