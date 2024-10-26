@@ -97,7 +97,7 @@ export async function main() {
 	const jsonCopied = () => {
 		alert('jsonをコピーしました。downloads.fanbox.ccで実行して貼り付けてね');
 		if (confirm('downloads.fanbox.ccに遷移する？')) {
-			document.location.href = 'https://downloads.fanbox.cc';
+			window.open('https://downloads.fanbox.cc', '_blank');
 		}
 	};
 	try {
