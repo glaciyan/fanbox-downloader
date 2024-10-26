@@ -220,8 +220,10 @@ function addByPostInfo(downloadManage: DownloadManage, postInfo: PostInfo | unde
 		);
 		return;
 	}
-	const postName = `${formatISO(new TZDate(postInfo.publishedDatetime, 'Asia/Tokyo'), { representation: 'date' })}${postInfo.title}`;
-	const postObject = downloadManage.downloadObject.addPost(postName);
+	const postName = postInfo.title;
+	const postObject = downloadManage.downloadObject.addPost(
+		`${formatISO(new TZDate(postInfo.publishedDatetime, 'Asia/Tokyo'), { representation: 'date' })}_${postName}`,
+	);
 	postObject.setTags([downloadManage.getTagByFee(postInfo.feeRequired), ...postInfo.tags]);
 	downloadManage.addFee(postInfo.feeRequired);
 	downloadManage.addTags(...postInfo.tags);
