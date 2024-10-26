@@ -3,7 +3,7 @@
 	"version": "3.5.0",
 	"description": "pixiv FANBOXの投稿を投稿毎にフォルダ分け → ZIPとして一括ダウンロードするブックマークレット",
 	"scripts": {
-		"build": "esbuild --bundle --minify ./fanbox-downloader.ts --outfile=./docs/fanbox-downloader.min.js",
+		"build": "esbuild --bundle --format=esm --minify ./fanbox-downloader.ts --outfile=./docs/fanbox-downloader.min.js",
 		"lint": "eslint . --fix"
 	},
 	"repository": {
