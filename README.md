@@ -6,12 +6,12 @@ pixiv FANBOXの投稿を投稿毎にフォルダ分け → ZIPとして一括ダ
 
 ### 使い方
 
-- https://furubarug.github.io/fanbox-downloader/
+- https://narazaka.github.io/fanbox-downloader/
 
 ↓ブックマークレット
 
 ```
-javascript:import("https://furubarug.github.io/fanbox-downloader/fanbox-downloader.min.js").then(m=>m.main()).catch(e=>alert(`エラー出た(${e})`));
+javascript:import("https://narazaka.github.io/fanbox-downloader/fanbox-downloader.min.js").then(m=>m.main()).catch(e=>alert(`エラー出た(${e})`));
 ```
 
 ### 既知の問題
