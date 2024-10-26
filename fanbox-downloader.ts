@@ -1,4 +1,6 @@
 import { DownloadHelper, DownloadObject, DownloadUtils } from 'download-helper/download-helper';
+import { TZDate } from '@date-fns/tz';
+import { formatISO } from 'date-fns';
 
 /**
  * ダウンローダーの管理クラス
@@ -218,7 +220,7 @@ function addByPostInfo(downloadManage: DownloadManage, postInfo: PostInfo | unde
 		);
 		return;
 	}
-	const postName = postInfo.title;
+	const postName = `${formatISO(new TZDate(postInfo.publishedDatetime, 'Asia/Tokyo'), { representation: 'date' })}${postInfo.title}`;
 	const postObject = downloadManage.downloadObject.addPost(postName);
 	postObject.setTags([downloadManage.getTagByFee(postInfo.feeRequired), ...postInfo.tags]);
 	downloadManage.addFee(postInfo.feeRequired);
