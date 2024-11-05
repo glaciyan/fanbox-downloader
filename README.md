@@ -11,7 +11,7 @@ Translated into English (DeepL).
 Bookmarklet:
 
 ```
-javascript:import("https://fanbox-download.glaciyan.cc/fanbox-downloader.min.js").then(m=>m.main()).catch(e=>alert(`Error: (${e})`));
+javascript:import("https://fbdl.glaciyan.cc/fanbox-downloader.min.js").then(m=>m.main()).catch(e=>alert(`Error: (${e})`));
 ```
 
 ### Known Issues
