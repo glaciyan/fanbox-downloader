@@ -1,6 +1,7 @@
-import { DownloadHelper, DownloadObject, DownloadUtils } from 'download-helper/download-helper';
 import { TZDate } from '@date-fns/tz';
 import { formatISO } from 'date-fns';
+
+import { DownloadHelper, DownloadObject, DownloadUtils } from './DownloadHelper';
 
 /**
  * ダウンローダーの管理クラス
