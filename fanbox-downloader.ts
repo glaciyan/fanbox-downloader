@@ -71,9 +71,6 @@ class DownloadManage {
 	}
 }
 
-/**
- * メイン
- */
 export async function main() {
 	let downloadObject: DownloadObject | undefined;
 	if (window.location.origin === 'https://downloads.fanbox.cc') {
