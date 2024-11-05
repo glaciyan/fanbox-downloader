@@ -3,6 +3,7 @@
 Bookmarklet to batch download pixiv FANBOX posts as ZIP.
 
 Translated into English (DeepL).
+With smaller fixes for large text data.
 
 ### 使い方
 
