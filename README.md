@@ -1,36 +1,20 @@
 # fanbox-downloader
 
-pixiv FANBOXの投稿を投稿毎にフォルダ分け → ZIPとして一括ダウンロードするブックマークレット
+Bookmarklet to batch download pixiv FANBOX posts as ZIP.
 
-変更点: フォルダ名に日付が付くようにetc
+Translated into English (DeepL).
 
 ### 使い方
 
 - https://narazaka.github.io/fanbox-downloader/
 
-↓ブックマークレット
+Bookmarklet:
 
 ```
-javascript:import("https://narazaka.github.io/fanbox-downloader/fanbox-downloader.min.js").then(m=>m.main()).catch(e=>alert(`エラー出た(${e})`));
+javascript:import("https://fanbox-download.glaciyan.cc/fanbox-downloader.min.js").then(m=>m.main()).catch(e=>alert(`Error: (${e})`));
 ```
 
-### 既知の問題
+### Known Issues
 
-- 4GB超えるとZIP解凍時にエラーが出る（解凍ファイルに問題はないけど、うるさいツールだと解凍してくれないかも）
-- ファイル表示のリンクで`download`属性が機能してない（ファイル名重複時に元ファイル名に戻せない）
-
-### fork後の変更点
-
-- 対応するURLを少し増やした
-- 投稿毎にフォルダ分けしたZIPでダウンロードするよ
-- 投稿の文章とかの情報もそれっぽく保存
-- コードが長くなったから外部から読み込むようにした
-
-### 開発用TIPS
-
-- tsコンパイル
-
-```bash
-# yarn run build
-npm run build
-```
+- Some tools may not be able to unzip files over 4GB
+- Unable to restore the original file names in some cases.

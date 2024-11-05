@@ -46,7 +46,7 @@ class DownloadManage {
 	}
 
 	getTagByFee(fee: number): string {
-		return this.feeMap.get(fee) ?? (fee > 0 ? `${fee}円` : '無料') + 'プラン';
+		return this.feeMap.get(fee) ?? (fee > 0 ? `${fee}yen` : 'free') + 'plan';
 	}
 
 	setLimitAvailable(isLimitAvailable: boolean) {
@@ -88,15 +88,15 @@ export async function main() {
 		const postId = window.location.href.match(/.*\.fanbox\.cc\/posts\/(\d*)/)?.[1];
 		downloadObject = await searchBy(creatorId, postId);
 	} else {
-		alert(`ここどこですか(${window.location.href})`);
+		alert(`Invalid webpage(${window.location.href})`);
 		return;
 	}
 	if (!downloadObject) return;
 	const json = downloadObject.stringify();
 	console.log(json);
 	const jsonCopied = () => {
-		alert('jsonをコピーしました。downloads.fanbox.ccで実行して貼り付けてね');
-		if (confirm('downloads.fanbox.ccに遷移する？')) {
+		alert('JSON has been copied, run it through download.fanbox.cc?');
+		if (confirm('Open downloads.fanbox.cc? Run the script again when you are there.')) {
 			window.open('https://downloads.fanbox.cc', '_blank');
 		}
 	};
@@ -111,12 +111,12 @@ export async function main() {
 					.writeText(json)
 					.then(() => jsonCopied())
 					.catch(() =>
-						alert('jsonコピーに失敗しました。もう一度実行するかコンソールからコピーしてね'),
+						alert('JSON copy failed. Run it again or copy from the console.'),
 					);
 			},
 			{ once: true },
 		);
-		alert('jsonコピーに失敗しました。画面の適当なとこをクリック！');
+		alert('JSON copy failed. Click somewhere on the screen and stay on the page.');
 	}
 }
 
@@ -130,7 +130,7 @@ async function searchBy(
 	postId: string | undefined,
 ): Promise<DownloadObject | undefined> {
 	if (!creatorId) {
-		alert('しらないURL');
+		alert('unknown URL');
 		return;
 	}
 	const plans = DownloadManage.utils.httpGetAs<Plans>(
@@ -156,8 +156,8 @@ async function searchBy(
  * @param downloadManage ダウンロード設定
  */
 async function getItemsById(downloadManage: DownloadManage) {
-	downloadManage.isIgnoreFree = confirm('無料コンテンツを省く？');
-	const limitBase = prompt('取得制限数を入力 キャンセルで全て取得');
+	downloadManage.isIgnoreFree = confirm('Exclude free content?');
+	const limitBase = prompt('Enter the number of posts you want to include. Click \'Cancel\' to include everything.');
 	if (limitBase) {
 		const limit = Number.parseInt(limitBase);
 		if (limit) {
@@ -169,7 +169,7 @@ async function getItemsById(downloadManage: DownloadManage) {
 		`https://api.fanbox.cc/post.paginateCreator?creatorId=${downloadManage.userId}`,
 	).body;
 	for (let i = 0; i < urls.length; i++) {
-		console.log(`${i + 1}回目`);
+		console.log(`page ${i + 1}`);
 		await addByPostListUrl(downloadManage, urls[i]);
 		await DownloadManage.utils.sleep(10);
 	}
@@ -182,7 +182,7 @@ async function getItemsById(downloadManage: DownloadManage) {
  */
 async function addByPostListUrl(downloadManage: DownloadManage, url: string): Promise<void> {
 	const postList = DownloadManage.utils.httpGetAs<{ body: PostInfo[] }>(url).body;
-	console.log(`投稿の数:${postList.length}`);
+	console.log(`Number of posts: ${postList.length}`);
 	for (const post of postList) {
 		if (downloadManage.isLimitValid()) {
 			if (post.body) {
@@ -216,7 +216,7 @@ function addByPostInfo(downloadManage: DownloadManage, postInfo: PostInfo | unde
 	}
 	if (!postInfo.body || postInfo.isRestricted) {
 		console.log(
-			`取得できませんでした(支援がたりない？)\nfeeRequired: ${postInfo.feeRequired}@${postInfo.id}`,
+			`Could not get post, make sure your plan sufficient.\nfeeRequired: ${postInfo.feeRequired}@${postInfo.id}`,
 		);
 		return;
 	}
@@ -334,8 +334,8 @@ function addByPostInfo(downloadManage: DownloadManage, postInfo: PostInfo | unde
 			break;
 		}
 		default:
-			parsedText = `不明なタイプ\n${postInfo.type}@${postInfo.id}\n`;
-			console.log(`不明なタイプ\n${postInfo.type}@${postInfo.id}`);
+			parsedText = `Unknown Type.\n${postInfo.type}@${postInfo.id}\n`;
+			console.log(`Unknown Type.\n${postInfo.type}@${postInfo.id}`);
 			break;
 	}
 

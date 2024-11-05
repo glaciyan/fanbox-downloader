@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="”description”" content="”pixiv" FANBOX の投稿をZIPとして一括ダウンロードするブックマークレットです。” />
+    <meta name="description" content="pixiv FANBOX batch download" />
     <title>fanbox-downloader</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
@@ -65,15 +65,15 @@
     <div class="text-center" style="margin: 10px">
         <h2>fanbox-downloader</h2>
         <div>
-            pixiv FANBOX の投稿をZIPとして一括ダウンロードするブックマークレットです。<br />
-            <a href="https://github.com/darekasan/fanbox-downloader">オリジナル</a>から好き勝手に手を加えています。
+            Bookmarklet to batch download pixiv FANBOX posts as ZIP.<br />
+            Modified and Translated version of the <a href="https://github.com/darekasan/fanbox-downloader">original</a>.
         </div>
         <br />
         <div class="code-bg">
             <div class="text-body">
-                <h5>使い方</h5>
+                <h5>Tutorial</h5>
                 <br />
-                <p>1. ブックマークレットをブックマークに追加する</p>
+                <p>1. Add the bookmarklet to your bookmarks.</p>
             </div>
 
             <div class="copy">
@@ -84,34 +84,35 @@
             </div>
 
             <div class="text-body">
-                <p>2. FANBOXのクリエイターページか投稿ページ<a href="#cite-1">^1</a>で実行する</p>
-                <p>3. 投稿情報がjsonでクリップボードに吐き出される</p>
+                <p>2. Go to a fanbox creator or post<a href="#cite-1">^1</a></p>
+                <p>3. The script will collect all posts. After it is done it attempts to copy the JSON data to your clipboard. If that fails you can also copy it from the console.</p>
                 <p>
-                    4. ダウンロードページ<a href="#cite-2">^2</a>でまた実行、入力ボックスに3のjsonをコピペ
+                    4. The script will open download.fanbox.cc<a href="#cite-2">^2</a>. There you run the script again, which will open a page where you paste in the JSON data into the textbox.
                 </p>
-                <p>5. なんかダウンロードはじまる</p>
+                <p>5. Wait for the download to finish.</p>
             </div>
 
             <br />
 
             <div class="text-cite">
-                <p id="cite-1">[^1]: ○○○.fanbox.ccかfanbox.cc/@○○○から始まるURLのページ</p>
+                <p id="cite-1">[^1]: Pages with URLs starting with XXX.fanbox.cc or fanbox.cc/@XXX</p>
                 <p id="cite-2">
-                    [^2]: download.fanbox.ccから始まるURLのページ(画像だとオリジナルサイズで表示のところ)
+                    [^2]: The page url has to start with download.fanbox.cc (this is the website where the images are stored in the orignal size).
                 </p>
             </div>
 
             <br />
 
             <div class="text-body">
-                <h5>リンク</h5>
+                <h5>Links</h5>
                 <ul>
-                    <li><a href="https://github.com/Narazaka/fanbox-downloader">Github</a></li>
+                    <li><a href="https://github.com/glaciyan/fanbox-downloader">Translation fork</a></li>
+                    <li><a href="https://github.com/Narazaka/fanbox-downloader">Second fork</a></li>
                     <li>
-                        <a href="https://github.com/furubarug/fanbox-downloader">オリジナル2(フォーク元)</a>
+                        <a href="https://github.com/furubarug/fanbox-downloader">First fork</a>
                     </li>
                     <li>
-                        <a href="https://github.com/darekasan/fanbox-downloader">オリジナル(フォーク元)</a>
+                        <a href="https://github.com/darekasan/fanbox-downloader">Orignal</a>
                     </li>
                 </ul>
             </div>
